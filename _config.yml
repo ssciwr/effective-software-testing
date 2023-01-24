@@ -1,0 +1,4 @@
+theme: jekyll-theme-slate
+title: "Effective Software Testing"
+description: "SSC Compact Course"
+exclude: [effectivesoftwaretesting, notebooks, tests]
