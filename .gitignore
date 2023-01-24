@@ -1,5 +1,5 @@
 # Ignore setuptools_scm generated version file
-effectivesoftwaretesting/_version.py
+effective_software_testing/_version.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
