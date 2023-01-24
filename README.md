@@ -1,30 +1,26 @@
-# Welcome to Effective Software Testing
+# Effective Software Testing
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ssciwr/effective-software-testing/ci.yml?branch=main)](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml)
-[![Documentation Status](https://readthedocs.org/projects/effective-software-testing/badge/)](https://effective-software-testing.readthedocs.io/)
 [![codecov](https://codecov.io/gh/ssciwr/effective-software-testing/branch/main/graph/badge.svg)](https://codecov.io/gh/ssciwr/effective-software-testing)
 
-## Installation
+## Slides
 
-The Python packaage `effectivesoftwaretesting` can be installed from PyPI:
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSqBlhIGMFkkWAiwTqUHYu6BugF846n45BPU288re_3hec6HTBLtrqWd1Xuco9aBIzCChCr4bYYYTZj/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-```
-python -m pip install effectivesoftwaretesting
-```
+[download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
 
-## Development installation
+## Getting started
 
-If you want to contribute to the development of `effectivesoftwaretesting`, we recommend
-the following editable installation from this repository:
+To clone the repo and do an editable install of the package:
 
 ```
-git clone git@github.com:ssciwr/effective-software-testing.git
+git clone https://github.com/ssciwr/effective-software-testing.git
 cd effective-software-testing
 python -m pip install --editable .[tests]
 ```
 
-Having done so, the test suite can be run using `pytest`:
+To run the tests:
 
 ```
 python -m pytest

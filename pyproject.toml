@@ -13,10 +13,10 @@ build-backend = "setuptools.build_meta"
 # single source of truth for effectivesoftwaretesting's version
 [project]
 name = "effectivesoftwaretesting"
-description = "Add short description here"
+description = "Example code from the SSC compact course Effective Software Testing"
 readme = "README.md"
 maintainers = [
-    { name = "Liam Keegan", email = "your@email.com" },
+    { name = "Liam Keegan", email = "liam.keegan@iwr.uni-heidelberg.de" },
 ]
 dynamic = ["version"]
 requires-python = ">=3.8"
@@ -35,14 +35,6 @@ tests = [
     "pytest",
     "pytest-cov",
     "nbval",
-]
-docs = [
-    "ipykernel",
-    "m2r2",
-    "nbsphinx",
-    "nbsphinx-link",
-    "sphinx",
-    "sphinx_rtd_theme",
 ]
 
 # Command line scripts installed as part of the installation
