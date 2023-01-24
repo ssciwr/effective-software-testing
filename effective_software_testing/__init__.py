@@ -1,5 +1,5 @@
 # The version file is generated automatically by setuptools_scm
-from effectivesoftwaretesting._version import version as __version__
+from effective_software_testing._version import version as __version__
 
 
 def add_one(x: int):

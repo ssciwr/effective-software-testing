@@ -10,9 +10,9 @@ build-backend = "setuptools.build_meta"
 
 # This section provides general project metadata that is used across
 # a variety of build tools. Notably, the version specified here is the
-# single source of truth for effectivesoftwaretesting's version
+# single source of truth for effective_software_testing's version
 [project]
-name = "effectivesoftwaretesting"
+name = "effective_software_testing"
 description = "Example code from the SSC compact course Effective Software Testing"
 readme = "README.md"
 maintainers = [
@@ -38,14 +38,14 @@ tests = [
 
 # Command line scripts installed as part of the installation
 [project.scripts]
-effectivesoftwaretesting = "effectivesoftwaretesting.__main__:main"
+effective_software_testing = "effective_software_testing.__main__:main"
 
 # The following section contains setuptools-specific configuration
 # options. For a full reference of available options, check the overview
 # at https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 [tool.setuptools]
 packages = [
-    "effectivesoftwaretesting",
+    "effective_software_testing",
 ]
 
 # Configure setuptools_scm, which extracts the version number from
@@ -54,7 +54,7 @@ packages = [
 [tool.setuptools_scm]
 version_scheme = "post-release"
 local_scheme = "node-and-date"
-write_to = "effectivesoftwaretesting/_version.py"
+write_to = "effective_software_testing/_version.py"
 
 # The following is the configuration for the pytest test suite
 [tool.pytest.ini_options]
