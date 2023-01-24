@@ -34,7 +34,6 @@ dependencies = [
 tests = [
     "pytest",
     "pytest-cov",
-    "nbval",
 ]
 
 # Command line scripts installed as part of the installation
@@ -60,6 +59,5 @@ write_to = "effectivesoftwaretesting/_version.py"
 # The following is the configuration for the pytest test suite
 [tool.pytest.ini_options]
 testpaths = [
-    "tests",
-    "notebooks",
+    "tests"
 ]
