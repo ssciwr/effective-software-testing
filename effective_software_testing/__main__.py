@@ -2,7 +2,7 @@ import click
 
 
 @click.command()
-def main():
+def main() -> None:
     click.echo("This is effective_software_testing's command line interface.")
 
 
