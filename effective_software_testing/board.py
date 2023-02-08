@@ -12,13 +12,12 @@ def _player_as_char(player: Optional[Player]) -> str:
 
 
 class Board:
-    """A `rows` x `cols` tic-tac-toe board where a `Player` can make a move"""
+    """A `n` x `n` tic-tac-toe board where a `Player` can make a move"""
 
-    def __init__(self, rows: int, cols: int):
-        self.n_rows = rows
-        self.n_cols = cols
+    def __init__(self, n: int):
+        self.n = n
         self._squares: List[List[Optional[Player]]] = [
-            [None for _ in range(cols)] for _ in range(rows)
+            [None for _ in range(n)] for _ in range(n)
         ]
 
     def __repr__(self) -> str:
@@ -30,6 +29,28 @@ class Board:
         If the square is empty, returns `None`
         """
         return self._squares[row][col]
+
+    def winner(self) -> Optional[Player]:
+        # check rows and cols
+        for i in range(self.n):
+            for player in Player:
+                if all(self._squares[i][j] == player for j in range(self.n)) or all(
+                    self._squares[j][i] == player for j in range(self.n)
+                ):
+                    return player
+        # check diagonals
+        for player in Player:
+            if all(self._squares[i][i] == player for i in range(self.n)) or all(
+                self._squares[i][-1 - i] == player for i in range(self.n)
+            ):
+                return player
+        # no winner
+        return None
+
+    def game_over(self) -> bool:
+        if self.winner():
+            return True
+        return not any(None in row for row in self._squares)
 
     def make_move(self, row: int, col: int, player: Player) -> bool:
         """Make a move at position (`row`, `col`) for `player`

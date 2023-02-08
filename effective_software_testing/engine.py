@@ -10,7 +10,7 @@ class Engine:
         self._player = player
         self._board = board
         self._rng = np.random.default_rng()
-        self._indices = np.array(list(np.ndindex(board.n_rows, board.n_cols)))
+        self._indices = np.array(list(np.ndindex(board.n, board.n)))
 
     def make_move(self) -> bool:
         """Make a random valid move and return True.
