@@ -59,7 +59,7 @@ class Board:
 
         Otherwise it does nothing and returns `False`
         """
-        if row < 0 or col < 0:
+        if row < 0 or col < 0 or self.game_over():
             return False
         try:
             if self._squares[row][col] is not None:

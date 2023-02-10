@@ -62,3 +62,20 @@ def test_make_move_square_already_taken(
         assert board.square(row, col) == player1
         assert board.make_move(row, col, player2) is False
         assert board.square(row, col) == player1
+
+
+@pytest.mark.parametrize("n", board_sizes)
+def test_make_move_after_game_is_won(n: int) -> None:
+    board = Board(n)
+    assert board.game_over() is False
+    assert board.winner() is None
+    # both players try to make a row, starting with CROSS
+    board.make_move(0, 0, Player.CROSS)
+    for i in range(1, n):
+        board.make_move(n - 1, i, Player.CIRCLE)
+        board.make_move(0, i, Player.CROSS)
+    # CROSS has made a row, CIRCLE has not
+    assert board.game_over()
+    assert board.winner() == Player.CROSS
+    # CIRCLE cannot make a move
+    assert board.make_move(n - 1, 0, Player.CIRCLE) is False
