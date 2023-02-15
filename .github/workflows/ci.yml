@@ -29,6 +29,10 @@ jobs:
         # setuptools_scm requires a non-shallow clone of the repository
         fetch-depth: 0
 
+    - name: Linux setup
+      if: runner.os == 'Linux'
+      run: sudo apt-get update -yy && sudo apt-get install -yy libegl1
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
