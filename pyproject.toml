@@ -29,6 +29,7 @@ classifiers = [
 dependencies = [
     "click",
     "numpy",
+    "PyQt6"
 ]
 
 [project.optional-dependencies]
@@ -40,7 +41,7 @@ tests = [
 
 # Command line scripts installed as part of the installation
 [project.scripts]
-effective_software_testing = "effective_software_testing.__main__:main"
+tic-tac-toe = "effective_software_testing.__main__:main"
 
 # The following section contains setuptools-specific configuration
 # options. For a full reference of available options, check the overview

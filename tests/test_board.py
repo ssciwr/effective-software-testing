@@ -19,14 +19,14 @@ def test_empty_board_is_empty(n: int) -> None:
 def test_empty_board_game_not_over(n: int) -> None:
     board = Board(n)
     assert board.n == n
-    assert board.game_over() is False
+    assert board.game_is_over is False
 
 
 @pytest.mark.parametrize("n", board_sizes)
 def test_empty_board_no_winner(n: int) -> None:
     board = Board(n)
     assert board.n == n
-    assert board.winner() is None
+    assert board.winner is None
 
 
 @pytest.mark.parametrize("player", players)
@@ -37,6 +37,56 @@ def test_empty_board_make_move_valid(n: int, player: Player) -> None:
         assert board.square(row, col) is None
         assert board.make_move(row, col, player) is True
         assert board.square(row, col) == player
+
+
+@pytest.mark.parametrize("player", players)
+@pytest.mark.parametrize("n", board_sizes)
+def test_full_row_wins(n: int, player: Player) -> None:
+    for row in range(n):
+        board = Board(n)
+        assert board.game_is_over is False
+        assert board.winner is None
+        for col in range(n):
+            assert board.make_move(row, col, player) is True
+        assert board.game_is_over is True
+        assert board.winner == player
+
+
+@pytest.mark.parametrize("player", players)
+@pytest.mark.parametrize("n", board_sizes)
+def test_full_col_wins(n: int, player: Player) -> None:
+    for col in range(n):
+        board = Board(n)
+        assert board.game_is_over is False
+        assert board.winner is None
+        for row in range(n):
+            assert board.make_move(row, col, player) is True
+        assert board.game_is_over is True
+        assert board.winner == player
+
+
+@pytest.mark.parametrize("player", players)
+@pytest.mark.parametrize("n", board_sizes)
+def test_full_diag_top_left_wins(n: int, player: Player) -> None:
+    board = Board(n)
+    assert board.game_is_over is False
+    assert board.winner is None
+    for x in range(n):
+        assert board.make_move(x, x, player) is True
+    assert board.game_is_over is True
+    assert board.winner == player
+
+
+@pytest.mark.parametrize("player", players)
+@pytest.mark.parametrize("n", board_sizes)
+def test_full_diag_bottom_left_wins(n: int, player: Player) -> None:
+    board = Board(n)
+    assert board.game_is_over is False
+    assert board.winner is None
+    for x in range(n):
+        assert board.make_move(n - 1 - x, x, player) is True
+    assert board.game_is_over is True
+    assert board.winner == player
 
 
 @pytest.mark.parametrize("player", players)
@@ -65,17 +115,34 @@ def test_make_move_square_already_taken(
 
 
 @pytest.mark.parametrize("n", board_sizes)
-def test_make_move_after_game_is_won(n: int) -> None:
+def test_make_move_after_game_is_won_with_row(n: int) -> None:
     board = Board(n)
-    assert board.game_over() is False
-    assert board.winner() is None
-    # both players try to make a row, starting with CROSS
+    assert board.game_is_over is False
+    assert board.winner is None
+    # both players try to fill a row, starting with CROSS
     board.make_move(0, 0, Player.CROSS)
     for i in range(1, n):
         board.make_move(n - 1, i, Player.CIRCLE)
         board.make_move(0, i, Player.CROSS)
-    # CROSS has made a row, CIRCLE has not
-    assert board.game_over()
-    assert board.winner() == Player.CROSS
-    # CIRCLE cannot make a move
+    # CROSS has filled a row, CIRCLE has not
+    assert board.game_is_over
+    assert board.winner == Player.CROSS
+    # CIRCLE cannot complete their column
     assert board.make_move(n - 1, 0, Player.CIRCLE) is False
+
+
+@pytest.mark.parametrize("n", board_sizes)
+def test_make_move_after_game_is_won_with_col(n: int) -> None:
+    board = Board(n)
+    assert board.game_is_over is False
+    assert board.winner is None
+    # both players try to fill a col, starting with CIRCLE
+    board.make_move(0, 0, Player.CIRCLE)
+    for i in range(1, n):
+        board.make_move(i, n - 1, Player.CROSS)
+        board.make_move(i, 0, Player.CIRCLE)
+    # CIRCLE has made a column, CROSS has not
+    assert board.game_is_over
+    assert board.winner == Player.CIRCLE
+    # CROSS cannot complete their column
+    assert board.make_move(0, n - 1, Player.CROSS) is False

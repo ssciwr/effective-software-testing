@@ -20,12 +20,12 @@ def test_single_engine_1x1_board(player: Player) -> None:
     board = Board(1)
     engine = Engine(player, board)
     assert board.square(0, 0) is None
-    assert board.game_over() is False
-    assert board.winner() is None
+    assert board.game_is_over is False
+    assert board.winner is None
     assert engine.make_move() is True
     assert board.square(0, 0) == player
-    assert board.game_over() is True
-    assert board.winner() == player
+    assert board.game_is_over is True
+    assert board.winner == player
     assert engine.make_move() is False
 
 
@@ -38,8 +38,8 @@ def test_single_engine_always_wins_3x3_board(player: Player) -> None:
     while engine.make_move():
         num_successful_moves += 1
         assert _count_squares(board, player) == num_successful_moves
-    assert board.game_over() is True
-    assert board.winner() == player
+    assert board.game_is_over is True
+    assert board.winner == player
     assert engine.make_move() is False
 
 
@@ -55,7 +55,7 @@ def test_two_engines_finish_game_3x3_board(
     assert _count_squares(board, Player.CIRCLE) == 0
     num_cross = 0
     num_circle = 0
-    while not board.game_over():
+    while not board.game_is_over:
         if engine_cross.make_move():
             num_cross += 1
         if engine_circle.make_move():
@@ -63,8 +63,8 @@ def test_two_engines_finish_game_3x3_board(
         assert _count_squares(board, Player.CROSS) == num_cross
         assert _count_squares(board, Player.CIRCLE) == num_circle
         assert num_cross >= num_circle
-    assert board.game_over() is True
-    if board.winner() is None:
+    assert board.game_is_over is True
+    if board.winner is None:
         assert _count_squares(board, None) == 0
     else:
         assert _count_squares(board, None) >= 0
