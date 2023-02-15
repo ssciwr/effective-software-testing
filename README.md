@@ -8,7 +8,7 @@ A sample Python project to accompany the SSC compact course ["Effective Software
 
 The project is a simple implementation of the game "tic-tac-toe" including a test suite.
 
-Continuous integration is set up using Github actions, which automatically run the tests and display a coverage report whenever a pull request is made.
+Continuous integration is set up using [Github actions](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml) and [codecov](https://app.codecov.io/gh/ssciwr/effective-software-testing), which automatically run the tests and display a coverage report whenever a pull request is made.
 
 ## Getting started
 
