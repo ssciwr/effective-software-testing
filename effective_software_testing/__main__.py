@@ -6,7 +6,14 @@ from effective_software_testing.gui import Gui
 
 
 @click.command()
-@click.option("-s", "--size", default=3, show_default=True, help="Size of the board")
+@click.option(
+    "-s",
+    "--size",
+    type=click.IntRange(1, 16),
+    default=3,
+    show_default=True,
+    help="Size of the board",
+)
 def main(size: int) -> None:
     app = QApplication(sys.argv)
     window = Gui(size)
