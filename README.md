@@ -4,7 +4,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ssciwr/effective-software-testing/ci.yml?branch=main)](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ssciwr/effective-software-testing/branch/main/graph/badge.svg)](https://codecov.io/gh/ssciwr/effective-software-testing)
 
-A sample Python project to accompany the SSC compact course "Effective Software Testing".
+A sample Python project to accompany the SSC compact course ["Effective Software Testing"](https://ssciwr.github.io/effective-software-testing).
 
 The project is a simple implementation of the game "tic-tac-toe" including a test suite.
 
