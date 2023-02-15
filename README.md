@@ -4,11 +4,11 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ssciwr/effective-software-testing/ci.yml?branch=main)](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/ssciwr/effective-software-testing/branch/main/graph/badge.svg)](https://codecov.io/gh/ssciwr/effective-software-testing)
 
-## Slides
+A sample Python project to accompany the SSC compact course "Effective Software Testing".
 
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSqBlhIGMFkkWAiwTqUHYu6BugF846n45BPU288re_3hec6HTBLtrqWd1Xuco9aBIzCChCr4bYYYTZj/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+The project is a simple implementation of the game "tic-tac-toe" including a test suite.
 
-[download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
+Continuous integration is set up using Github actions, which automatically run the tests and display a coverage report whenever a pull request is made.
 
 ## Getting started
 
@@ -25,6 +25,10 @@ To run the tests:
 ```
 python -m pytest
 ```
+
+## Slides
+
+[download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/docs/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
 
 ## Acknowledgments
 
