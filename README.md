@@ -1,4 +1,4 @@
-# Effective Software Testing
+# [Effective Software Testing](https://ssciwr.github.io/effective-software-testing)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ssciwr/effective-software-testing/ci.yml?branch=main)](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml)
@@ -8,7 +8,11 @@ A sample Python project to accompany the SSC compact course ["Effective Software
 
 The project is a simple implementation of the game "tic-tac-toe" including a test suite.
 
-Continuous integration is set up using [Github actions](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml) and [codecov](https://app.codecov.io/gh/ssciwr/effective-software-testing), which automatically run the tests and display a coverage report whenever a pull request is made.
+Continuous integration is set up using
+[Github actions](https://github.com/ssciwr/effective-software-testing/actions/workflows/ci.yml)
+and
+[codecov](https://app.codecov.io/gh/ssciwr/effective-software-testing)
+which automatically run the tests and display a coverage report whenever a pull request is made.
 
 ## Getting started
 
@@ -31,9 +35,7 @@ To play the tic-tac-toe game on a 4x4 board:
 tic-tac-toe --size 4
 ```
 
-## Slides
-
-[download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/docs/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
+![screenshot](docs/assets/images/screenshot.png)
 
 ## Acknowledgments
 
