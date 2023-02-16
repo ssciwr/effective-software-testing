@@ -21,7 +21,7 @@ def test_1x1_gui(qtbot: QtBot, monkeypatch: MonkeyPatch) -> None:
 
     with qtbot.wait_exposed(gui):
         gui.show()
-    # click on board, we win the 1x1 game
+    # click on board, we win the 1x1 game, gui calls QMessageBox.information()
     qtbot.mouseClick(gui.windowHandle(), Qt.MouseButton.LeftButton)
     qtbot.wait_until(lambda: "title" in messagebox_data)
 

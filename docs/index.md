@@ -15,6 +15,10 @@ also apply to other frameworks and languages
 
 A sample project including a test suite is provided at [github.com/ssciwr/effective-software-testing](https://github.com/ssciwr/effective-software-testing)
 
+The sample project is a simple implementation of the game "tic-tac-toe".
+
+![screenshot](assets/images/screenshot.png)
+
 To clone the repo and do an editable install of the package:
 
 ```
@@ -27,4 +31,10 @@ To run the tests:
 
 ```
 python -m pytest
+```
+
+To play the tic-tac-toe game on a 4x4 board:
+
+```
+tic-tac-toe --size 4
 ```
