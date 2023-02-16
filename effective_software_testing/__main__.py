@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QApplication
 from effective_software_testing.gui import Gui
 from effective_software_testing import __version__
 
+
 @click.command()
 @click.option(
     "-s",

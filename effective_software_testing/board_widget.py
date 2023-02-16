@@ -3,7 +3,7 @@ from effective_software_testing.board import Board
 from effective_software_testing.player import Player
 from PyQt6.QtWidgets import QLabel
 from PyQt6.QtCore import QSize, pyqtSignal
-from PyQt6.QtGui import QPixmap, QPainter, QPen, QMouseEvent, QResizeEvent, qRgb
+from PyQt6.QtGui import QPixmap, QPainter, QMouseEvent, QResizeEvent, qRgb
 import numpy as np
 from typing import Optional
 

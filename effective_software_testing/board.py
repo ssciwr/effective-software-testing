@@ -35,8 +35,9 @@ class Board:
 
     def __init__(self, n: int):
         self.n = n
-        self.winner: Optional[Player] = None
+        self.game_winner: Optional[Player] = None
         self.game_is_over = False
+        self._last_player: Optional[Player] = None
         self._squares: List[List[Optional[Player]]] = [
             [None for _ in range(n)] for _ in range(n)
         ]
@@ -45,8 +46,8 @@ class Board:
         return f"Board<{'|'.join([''.join([_player_as_char(player) for player in row]) for row in self._squares])}>"
 
     def _update_game_state(self) -> None:
-        self.winner = _get_winner(self)
-        self.game_is_over = self.winner is not None or not any(
+        self.game_winner = _get_winner(self)
+        self.game_is_over = self.game_winner is not None or not any(
             None in row for row in self._squares
         )
 
@@ -64,12 +65,13 @@ class Board:
 
         Otherwise it does nothing and returns `False`
         """
-        if row < 0 or col < 0 or self.game_is_over:
+        if row < 0 or col < 0 or self.game_is_over or player == self._last_player:
             return False
         try:
             if self._squares[row][col] is not None:
                 return False
             self._squares[row][col] = player
+            self._last_player = player
             self._update_game_state()
             return True
         except IndexError:

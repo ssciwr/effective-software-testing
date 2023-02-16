@@ -19,7 +19,7 @@ class Engine:
 
         If no valid move is possible, return False"""
         self._rng.shuffle(self._indices)
-        # try to make a move on each square in a random order
+        # try each square in a random order until a move is valid
         for row, col in self._indices:
             if self._board.make_move(row, col, self._player):
                 return True
