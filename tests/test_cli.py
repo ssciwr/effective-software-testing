@@ -1,3 +1,4 @@
+from __future__ import annotations
 from effective_software_testing.__main__ import main
 from effective_software_testing import __version__
 

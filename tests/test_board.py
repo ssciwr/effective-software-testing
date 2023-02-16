@@ -1,3 +1,4 @@
+from __future__ import annotations
 from effective_software_testing.player import Player
 from effective_software_testing.board import Board
 import pytest
