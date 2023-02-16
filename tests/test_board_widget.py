@@ -1,3 +1,4 @@
+from __future__ import annotations
 from effective_software_testing.board import Board
 from effective_software_testing.board_widget import BoardWidget
 from PyQt6.QtCore import QSize, Qt, QPoint
