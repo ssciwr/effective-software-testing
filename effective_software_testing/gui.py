@@ -18,14 +18,17 @@ class Gui(QMainWindow):
         self.setCentralWidget(self.board_widget)
 
     def _make_user_move(self, row: int, col: int) -> None:
-        self.board.make_move(row, col, Player.CIRCLE)
+        if not self.board.make_move(row, col, Player.CIRCLE):
+            # if user move was not valid, ignore it
+            return
         self.board_widget.update_image()
+        # make engine move
         self.engine.make_move()
         self.board_widget.update_image()
         if self.board.game_is_over:
-            if self.board.winner == Player.CIRCLE:
+            if self.board.game_winner == Player.CIRCLE:
                 QMessageBox.information(self, "You win!", "You won the game!")
-            elif self.board.winner == Player.CROSS:
+            elif self.board.game_winner == Player.CROSS:
                 QMessageBox.information(self, "You lose", "You lost the game.")
             else:
                 QMessageBox.information(self, "Draw", "Game ended in a draw.")
