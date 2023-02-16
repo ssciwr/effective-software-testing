@@ -26,6 +26,11 @@ To run the tests:
 python -m pytest
 ```
 
+To play the tic-tac-toe game on a 4x4 board:
+```
+tic-tac-toe --size 4
+```
+
 ## Slides
 
 [download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/docs/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
