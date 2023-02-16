@@ -146,3 +146,16 @@ def test_make_move_after_game_is_won_with_col(n: int) -> None:
     assert board.winner == Player.CIRCLE
     # CROSS cannot complete their column
     assert board.make_move(0, n - 1, Player.CROSS) is False
+
+
+def test_3x3_board_repr() -> None:
+    board = Board(3)
+    assert board.__repr__() == "Board<...|...|...>"
+    board.make_move(0, 0, Player.CROSS)
+    assert board.__repr__() == "Board<X..|...|...>"
+    board.make_move(0, 2, Player.CIRCLE)
+    assert board.__repr__() == "Board<X.O|...|...>"
+    board.make_move(2, 2, Player.CROSS)
+    assert board.__repr__() == "Board<X.O|...|..X>"
+    board.make_move(1, 1, Player.CIRCLE)
+    assert board.__repr__() == "Board<X.O|.O.|..X>"
