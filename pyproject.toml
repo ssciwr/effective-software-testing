@@ -37,6 +37,7 @@ tests = [
     "pytest",
     "pytest-cov",
     "pytest-qt",
+    "pytest-xvfb",
     "ipytest"
 ]
 

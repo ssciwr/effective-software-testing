@@ -32,7 +32,7 @@ jobs:
     - name: Linux setup
       if: runner.os == 'Linux'
       run: |
-        sudo apt-get update -yy && sudo apt-get install -yy libegl1
+        sudo apt-get update -yy && sudo apt-get install -yy libegl1 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 x11-utils
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
