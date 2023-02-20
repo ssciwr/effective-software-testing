@@ -32,12 +32,12 @@ def _draw_player_shape(
 
 
 def _draw_player_shapes(painter: QPainter, size: QSize, board: Board) -> None:
-    fractional_pen_width = 0.01
+    fractional_pen_width = 0.02
     pen_width = max(2, int(fractional_pen_width * min(size.width(), size.height())))
     pen = painter.pen()
     pen.setWidth(pen_width)
     painter.setPen(pen)
-    fractional_padding = 0.1
+    fractional_padding = 0.15
     shape_fractional_size = 1.0 - 2.0 * fractional_padding
     shape_width = int(shape_fractional_size * size.width() / board.n)
     shape_height = int(int(shape_fractional_size * size.height() / board.n))

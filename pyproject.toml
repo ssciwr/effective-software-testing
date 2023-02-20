@@ -36,6 +36,7 @@ dependencies = [
 tests = [
     "pytest",
     "pytest-cov",
+    "pytest-randomly",
     "pytest-qt",
     "pytest-xvfb",
     "ipytest"
