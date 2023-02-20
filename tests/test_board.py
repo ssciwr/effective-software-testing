@@ -31,6 +31,17 @@ def test_empty_board_no_winner(n: int) -> None:
 
 
 @pytest.mark.parametrize("player", players)
+def test_1x1_board_first_move_wins(player: Player) -> None:
+    board = Board(1)
+    assert board.game_is_over is False
+    assert board.game_winner is None
+    board.make_move(0, 0, player)
+    assert board.square(0, 0) == player
+    assert board.game_is_over is True
+    assert board.game_winner == player
+
+
+@pytest.mark.parametrize("player", players)
 @pytest.mark.parametrize("n", board_sizes)
 def test_empty_board_make_move_valid(n: int, player: Player) -> None:
     for row, col in np.ndindex(n, n):

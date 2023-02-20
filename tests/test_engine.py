@@ -17,32 +17,35 @@ def _count_squares(board: Board, player: Optional[Player]) -> int:
 
 
 @pytest.mark.parametrize("player", players)
-def test_engine_plays_first_1x1_board(player: Player) -> None:
+def test_1x1_board_engine_plays_first(player: Player) -> None:
+    # empty 1x1 board
     board = Board(1)
     engine = Engine(player, board)
     assert board.square(0, 0) is None
     assert board.game_is_over is False
     assert board.game_winner is None
+    # engine makes the only legal move
     assert engine.make_move() is True
     assert board.square(0, 0) == player
     assert board.game_is_over is True
     assert board.game_winner == player
+    # engine can't make another move
     assert engine.make_move() is False
 
 
-@pytest.mark.parametrize("n", [2, 3, 4])
-def engine_plays_second_makes_valid_move(n: int) -> None:
+@pytest.mark.parametrize("n", [2, 3, 4, 5])
+def test_engine_plays_second_makes_valid_move(n: int) -> None:
     for row, col in np.ndindex(n, n):
         # empty board
         board = Board(n)
         engine = Engine(Player.CROSS, board)
         assert _count_squares(board, Player.CROSS) == 0
         assert _count_squares(board, Player.CIRCLE) == 0
-        # circle makes a valid initial move
+        # circle makes a valid initial move at (row,col)
         board.make_move(row, col, Player.CIRCLE)
         assert _count_squares(board, Player.CROSS) == 0
         assert _count_squares(board, Player.CIRCLE) == 1
-        # engine makes a valid move
+        # engine makes a valid move somewhere
         assert engine.make_move() is True
         assert _count_squares(board, Player.CROSS) == 1
         assert _count_squares(board, Player.CIRCLE) == 1
@@ -50,7 +53,7 @@ def engine_plays_second_makes_valid_move(n: int) -> None:
         assert engine.make_move() is False
 
 
-@pytest.mark.parametrize("n", [1, 2, 3, 4])
+@pytest.mark.parametrize("n", [1, 2, 3, 4, 5])
 @pytest.mark.parametrize("rng_seed_cross", range(5))
 @pytest.mark.parametrize("rng_seed_circle", range(5))
 def test_two_engines_finish_game(

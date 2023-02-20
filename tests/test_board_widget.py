@@ -24,8 +24,10 @@ def test_empty_board_widget_resize(qtbot: QtBot) -> None:
     board = Board(n)
     board_widget = BoardWidget(board)
     qtbot.add_widget(board_widget)
+    # wait until widget is visible
     with qtbot.wait_exposed(board_widget):
         board_widget.show()
+    # resize the widget to the desired size
     board_widget.resize(widget_size)
 
     def check_image() -> None:
@@ -35,7 +37,15 @@ def test_empty_board_widget_resize(qtbot: QtBot) -> None:
             point = _row_col_to_qpoint(row, col, n, widget_size)
             assert image.pixel(point) == board_widget.background_color
 
+    # call check image until it doesn't raise any assertion errors or until timeout
     qtbot.wait_until(check_image)
+
+    # Why not just call board_widget.resize(), then check_image()?
+    #   - the resize operation is asynchronous, so it may not complete before the check_image()
+    # one solution is to add a sleep in between the two to allow time for the resize
+    #   - this is ok, but how long should you sleep?
+    #   - to be safe the sleep should be quite long
+    #   - but if you have a hundred similar tests you end up making the tests very slow to run
 
 
 def test_empty_board_mouse_click_on_square(qtbot: QtBot) -> None:
@@ -44,10 +54,13 @@ def test_empty_board_mouse_click_on_square(qtbot: QtBot) -> None:
     board = Board(n)
     board_widget = BoardWidget(board)
     qtbot.addWidget(board_widget)
+    # wait until widget is visible
     with qtbot.wait_exposed(board_widget):
         board_widget.show()
+    # wait until widget is resized to desired size
     board_widget.resize(widget_size)
     qtbot.wait_until(lambda: board_widget.size() == widget_size)
+    # for each square, click in center & wait for square_clicked signal
     for row, col in np.ndindex(n, n):
         point = _row_col_to_qpoint(row, col, n, widget_size)
         with qtbot.wait_signal(board_widget.square_clicked) as blocker:
