@@ -2,28 +2,22 @@ from __future__ import annotations
 from effective_software_testing.gui import Gui
 from PyQt6.QtCore import Qt
 from pytestqt.qtbot import QtBot
-from PyQt6.QtWidgets import QMessageBox
-from typing import Any
 from pytest import MonkeyPatch
+from typing import List
 
 
-def test_1x1_gui(qtbot: QtBot, monkeypatch: MonkeyPatch) -> None:
+def test_1x1_gui(
+    qtbot: QtBot, monkeypatch: MonkeyPatch, qmessagebox_calls: List
+) -> None:
     gui = Gui(1)
     qtbot.add_widget(gui)
-    messagebox_data = {}
-
-    def _mock_QMessageBox_information(parent: Any, title: Any, text: Any) -> None:
-        messagebox_data["title"] = title
-        messagebox_data["text"] = text
-
-    # mock QMessageBox.information() to just store the title/text and return
-    monkeypatch.setattr(QMessageBox, "information", _mock_QMessageBox_information)
-
     with qtbot.wait_exposed(gui):
         gui.show()
-    # click on board, we win the 1x1 game, gui calls QMessageBox.information()
+    # click on board -> we win the 1x1 game -> gui calls QMessageBox.information()
     qtbot.mouseClick(gui.windowHandle(), Qt.MouseButton.LeftButton)
-    qtbot.wait_until(lambda: "title" in messagebox_data)
-
-    assert "win" in messagebox_data["title"].lower()
-    assert "you won" in messagebox_data["text"].lower()
+    # wait until gui has called QMessageBox.information()
+    qtbot.wait_until(lambda: len(qmessagebox_calls) > 0)
+    assert len(qmessagebox_calls) == 1
+    assert qmessagebox_calls[0]["name"] == "information"
+    assert "win" in qmessagebox_calls[0]["title"].lower()
+    assert "you won" in qmessagebox_calls[0]["text"].lower()
