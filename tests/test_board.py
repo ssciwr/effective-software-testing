@@ -10,5 +10,5 @@ def test_empty_board_valid_squares() -> None:
 
 def test_empty_board_invalid_squares() -> None:
     board = Board()
-    with pytest.raises(Exception):
+    with pytest.raises(IndexError):
         board.get_square(3, 3)
