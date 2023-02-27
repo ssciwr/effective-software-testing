@@ -42,3 +42,25 @@ def test_empty_board_make_move_square_already_taken() -> None:
     assert board.make_move(0, 0, Player.CROSS) is True
     assert board.make_move(0, 0, Player.CROSS) is False
     assert board.make_move(0, 0, Player.CIRCLE) is False
+
+
+def test_make_move_game_already_over() -> None:
+    board = Board()
+    # both players alternate to fill their row
+    assert board.make_move(0, 0, Player.CROSS) is True
+    assert board.make_move(1, 0, Player.CIRCLE) is True
+    assert board.make_move(0, 1, Player.CROSS) is True
+    assert board.make_move(1, 1, Player.CIRCLE) is True
+    assert board.make_move(0, 2, Player.CROSS) is True
+    # CROSS has won, circle cannot make a move:
+    assert board.make_move(1, 2, Player.CIRCLE) is False
+
+
+def test_board_repr() -> None:
+    board = Board()
+    assert board.make_move(0, 0, Player.CROSS) is True
+    assert board.make_move(1, 0, Player.CIRCLE) is True
+    assert board.make_move(0, 1, Player.CROSS) is True
+    assert board.make_move(1, 1, Player.CIRCLE) is True
+    assert board.make_move(0, 2, Player.CROSS) is True
+    assert board.__repr__() == "<XXX|OO-|--->"
