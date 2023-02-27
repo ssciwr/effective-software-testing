@@ -63,6 +63,9 @@ def test_full_row_wins(n: int) -> None:
             assert board.make_move(row, col, Player.CROSS) is True
         assert board.game_is_over is True
         assert board.game_winner == Player.CROSS
+        assert len(board.winning_squares) == n
+        for col in range(n):
+            assert (row, col) in board.winning_squares
         # game over: circle cannot make move that is otherwise valid:
         assert board.make_move((row + 1) % n, 0, Player.CIRCLE) is False
 
@@ -80,6 +83,9 @@ def test_full_col_wins(n: int, player: Player) -> None:
             assert board.make_move(row, col, Player.CROSS) is True
         assert board.game_is_over is True
         assert board.game_winner == Player.CROSS
+        assert len(board.winning_squares) == n
+        for row in range(n):
+            assert (row, col) in board.winning_squares
         # game over: circle cannot make move that is otherwise valid:
         assert board.make_move(0, (col + 1) % n, Player.CIRCLE) is False
 
@@ -95,6 +101,10 @@ def test_full_diag_top_left_3x3_wins() -> None:
     assert board.make_move(2, 2, Player.CROSS) is True
     assert board.game_is_over is True
     assert board.game_winner == Player.CROSS
+    assert len(board.winning_squares) == 3
+    assert (0, 0) in board.winning_squares
+    assert (1, 1) in board.winning_squares
+    assert (2, 2) in board.winning_squares
     assert board.make_move(1, 2, Player.CIRCLE) is False
 
 
@@ -109,6 +119,10 @@ def test_full_diag_bottom_left_3x3_wins() -> None:
     assert board.make_move(2, 0, Player.CROSS) is True
     assert board.game_is_over is True
     assert board.game_winner == Player.CROSS
+    assert len(board.winning_squares) == 3
+    assert (0, 2) in board.winning_squares
+    assert (1, 1) in board.winning_squares
+    assert (2, 0) in board.winning_squares
     assert board.make_move(1, 2, Player.CIRCLE) is False
 
 

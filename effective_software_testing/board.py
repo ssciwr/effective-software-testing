@@ -1,7 +1,6 @@
 from __future__ import annotations
 from effective_software_testing.player import Player
 from typing import Optional, List, Tuple
-from enum import Enum
 
 
 def _player_as_char(player: Optional[Player]) -> str:
@@ -12,7 +11,9 @@ def _player_as_char(player: Optional[Player]) -> str:
     return "."
 
 
-def _get_winner(board: Board) -> Tuple[Optional[Player], Optional[List]]:
+def _get_winner(
+    board: Board,
+) -> Tuple[Optional[Player], Optional[List[Tuple[int, int]]]]:
     """If a player has won the game, return that `Player`, otherwise returns `None`
 
     Also return a list of (`row`,`col`) pairs for the squares in the winning line
@@ -40,6 +41,7 @@ class Board:
     def __init__(self, n: int):
         self.n = n
         self.game_winner: Optional[Player] = None
+        self.winning_squares: Optional[List[Tuple[int, int]]] = None
         self.game_is_over = False
         self._last_player: Optional[Player] = None
         self._squares: List[List[Optional[Player]]] = [
@@ -50,7 +52,7 @@ class Board:
         return f"Board<{'|'.join([''.join([_player_as_char(player) for player in row]) for row in self._squares])}>"
 
     def _update_game_state(self) -> None:
-        self.game_winner, self.winning_line = _get_winner(self)
+        self.game_winner, self.winning_squares = _get_winner(self)
         self.game_is_over = self.game_winner is not None or not any(
             None in row for row in self._squares
         )
