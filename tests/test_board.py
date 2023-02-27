@@ -2,10 +2,11 @@ from effective_software_testing.board import Board, BoardException
 import pytest
 
 
-def test_empty_board_valid_squares() -> None:
+@pytest.mark.parametrize("row", [0, 1, 2])
+@pytest.mark.parametrize("col", [0, 1, 2])
+def test_empty_board_valid_squares(row: int, col: int) -> None:
     board = Board()
-    assert board.square(0, 0) is None
-    assert board.square(2, 2) is None
+    assert board.square(row, col) is None
 
 
 def test_empty_board_invalid_squares() -> None:
