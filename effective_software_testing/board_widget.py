@@ -3,7 +3,7 @@ from effective_software_testing.board import Board
 from effective_software_testing.player import Player
 from PyQt6.QtWidgets import QLabel
 from PyQt6.QtCore import QSize, pyqtSignal
-from PyQt6.QtGui import QPixmap, QPainter, QMouseEvent, QResizeEvent, qRgb
+from PyQt6.QtGui import QPixmap, QPainter, QMouseEvent, QResizeEvent, qRgb, QPen
 import numpy as np
 from typing import Optional
 
@@ -33,10 +33,14 @@ def _draw_player_shape(
 
 def _draw_player_shapes(painter: QPainter, size: QSize, board: Board) -> None:
     fractional_pen_width = 0.02
+    winning_color = qRgb(0, 255, 0)
     pen_width = max(2, int(fractional_pen_width * min(size.width(), size.height())))
+    winning_pen_width = max(3, int(1.5 * pen_width))
     pen = painter.pen()
     pen.setWidth(pen_width)
-    painter.setPen(pen)
+    winning_pen = QPen(pen)
+    winning_pen.setColor(winning_color)
+    winning_pen.setWidth(winning_pen_width)
     fractional_padding = 0.15
     shape_fractional_size = 1.0 - 2.0 * fractional_padding
     shape_width = int(shape_fractional_size * size.width() / board.n)
@@ -44,6 +48,10 @@ def _draw_player_shapes(painter: QPainter, size: QSize, board: Board) -> None:
     for row, col in np.ndindex(board.n, board.n):
         x0 = int((col + fractional_padding) * size.width() / board.n)
         y0 = int((row + fractional_padding) * size.height() / board.n)
+        if board.winning_squares is not None and (row, col) in board.winning_squares:
+            painter.setPen(winning_pen)
+        else:
+            painter.setPen(pen)
         _draw_player_shape(
             painter, board.square(row, col), x0, y0, shape_width, shape_height
         )
