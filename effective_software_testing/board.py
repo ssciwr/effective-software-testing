@@ -29,6 +29,31 @@ class Board:
     def __repr__(self) -> str:
         return "<" + "|".join(_row_as_str(row) for row in self.squares) + ">"
 
+    def winner(self) -> Optional[Player]:
+        for player in Player:
+            for i in range(self.n):
+                # full row
+                if all([self.squares[i][j] == player for j in range(self.n)]):
+                    return player
+                # full column
+                if all([self.squares[j][i] == player for j in range(self.n)]):
+                    return player
+            # diagonals
+            if all([self.squares[i][i] == player for i in range(self.n)]):
+                return player
+            if all([self.squares[self.n - 1 - i][i] == player for i in range(self.n)]):
+                return player
+        return None
+
+    def game_over(self) -> bool:
+        return not self._empty_squares_left() or self.winner() is not None
+
+    def _empty_squares_left(self) -> bool:
+        for row in self.squares:
+            if None in row:
+                return True
+        return False
+
     def square(self, row: int, col: int) -> Optional[Player]:
         """If a `Player` has made a move at (`row`,`col`) returns the `Player`, otherwise returns `None`"""
         if not 0 <= row < self.n:
@@ -39,7 +64,7 @@ class Board:
 
     def make_move(self, row: int, col: int, player: Player) -> bool:
         """If possible, make move for `Player` at (`row`,`col`) and return `True`, otherwise return `False`."""
-        if self.square(row, col) is None:
+        if self.square(row, col) is None and not self.game_over():
             self.squares[row][col] = player
             return True
         return False

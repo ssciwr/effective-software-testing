@@ -51,7 +51,12 @@ def test_make_move_game_already_over() -> None:
     assert board.make_move(1, 0, Player.CIRCLE) is True
     assert board.make_move(0, 1, Player.CROSS) is True
     assert board.make_move(1, 1, Player.CIRCLE) is True
+    assert board.game_over() is False
+    assert board.winner() is None
+    # CROSS plays winning move
     assert board.make_move(0, 2, Player.CROSS) is True
+    assert board.game_over()
+    assert board.winner() == Player.CROSS
     # CROSS has won, circle cannot make a move:
     assert board.make_move(1, 2, Player.CIRCLE) is False
 
