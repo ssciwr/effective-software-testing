@@ -22,7 +22,9 @@ def test_empty_board_invalid_squares() -> None:
 
 def test_empty_board_make_valid_move() -> None:
     board = Board()
+    assert board.square(0, 0) is None
     assert board.make_move(0, 0, Player.CROSS) is True
+    assert board.square(0, 0) == Player.CROSS
 
 
 def test_empty_board_make_move_invalid_square() -> None:
@@ -30,3 +32,10 @@ def test_empty_board_make_move_invalid_square() -> None:
     with pytest.raises(BoardException) as e:
         board.make_move(-1, 0, Player.CROSS)
     assert "row" in str(e.value)
+
+
+def test_empty_board_make_move_square_taken() -> None:
+    board = Board()
+    assert board.make_move(0, 0, Player.CROSS) is True
+    assert board.make_move(0, 0, Player.CROSS) is False
+    assert board.make_move(0, 0, Player.CROSS) is False
