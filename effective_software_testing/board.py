@@ -15,6 +15,10 @@ def _player_as_char(player: Optional[Player]) -> str:
         return "O"
 
 
+def _row_as_str(players: List[Optional[Player]]) -> str:
+    return "".join(_player_as_char(player) for player in players)
+
+
 class Board:
     def __init__(self) -> None:
         self.n = 3
@@ -23,14 +27,7 @@ class Board:
         ]
 
     def __repr__(self) -> str:
-        return (
-            "<"
-            + "|".join(
-                "".join([_player_as_char(player) for player in row])
-                for row in self.squares
-            )
-            + ">"
-        )
+        return "<" + "|".join(_row_as_str(row) for row in self.squares) + ">"
 
     def square(self, row: int, col: int) -> Optional[Player]:
         """If a `Player` has made a move at (`row`,`col`) returns the `Player`, otherwise returns `None`"""
