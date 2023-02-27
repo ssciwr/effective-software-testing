@@ -11,7 +11,9 @@ def test_empty_board_valid_squares(row: int, col: int) -> None:
 
 def test_empty_board_invalid_squares() -> None:
     board = Board()
-    with pytest.raises(BoardException):
-        board.square(3, 3)
-    with pytest.raises(BoardException):
-        board.square(-1, -2)
+    with pytest.raises(BoardException) as e:
+        board.square(3, 2)
+    assert "row" in str(e.value)
+    with pytest.raises(BoardException) as e:
+        board.square(0, -2)
+    assert "col" in str(e.value)
