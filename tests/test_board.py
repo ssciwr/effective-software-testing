@@ -33,12 +33,11 @@ def test_empty_board_make_valid_move(row: int, col: int, player: Player) -> None
 @pytest.mark.parametrize("player", [p for p in Player])
 def test_empty_board_make_move_invalid_square(player: Player) -> None:
     board = Board()
-    with pytest.raises(BoardException) as e:
+    with pytest.raises(BoardException, match=r".*row.*"):
         board.make_move(-1, 0, player)
-    assert "row" in str(e.value)
 
 
-def test_empty_board_make_move_square_taken() -> None:
+def test_empty_board_make_move_square_already_taken() -> None:
     board = Board()
     assert board.make_move(0, 0, Player.CROSS) is True
     assert board.make_move(0, 0, Player.CROSS) is False
