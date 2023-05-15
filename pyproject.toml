@@ -39,7 +39,8 @@ tests = [
     "pytest-randomly",
     "pytest-qt",
     "pytest-xvfb",
-    "ipytest"
+    "ipytest",
+    "hypothesis",
 ]
 
 # Command line scripts installed as part of the installation
