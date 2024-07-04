@@ -25,11 +25,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        # setuptools_scm requires a non-shallow clone of the repository
-        fetch-depth: 0
 
-    # qt requires some system libraries on linux that are not installed by default
     - name: Install system libs required by Qt on linux
       uses: tlambert03/setup-qt-libs@v1
 
