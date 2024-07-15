@@ -34,7 +34,7 @@ def sample_valid_n_x_y(draw: st.DrawFn) -> tuple[int, int, int]:
 
 @given(n_x_y=sample_valid_n_x_y())
 def test_property_empty_board_is_empty_with_composite(
-    n_x_y: tuple[int, int, int]
+    n_x_y: tuple[int, int, int],
 ) -> None:
     # no assume required here as all the x,y we generate are < n
     n, x, y = n_x_y
