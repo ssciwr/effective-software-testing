@@ -11,7 +11,7 @@ also apply to other frameworks and languages
 
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSqBlhIGMFkkWAiwTqUHYu6BugF846n45BPU288re_3hec6HTBLtrqWd1Xuco9aBIzCChCr4bYYYTZj/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-[download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/docs/slides/slides.pdf) | [download course description as pdf](https://ssc.iwr.uni-heidelberg.de/sites/default/files/effective-software-testing.pdf)
+- [download slides as pdf](https://github.com/ssciwr/effective-software-testing/raw/main/docs/slides/slides.pdf)
 
 ## Sample code
 
@@ -21,7 +21,7 @@ The sample project is a simple implementation of the game "tic-tac-toe".
 
 ![screenshot](assets/images/screenshot.png)
 
-To clone the repo and do an editable install of the package:
+To clone the repo and do an editable installation of the package:
 
 ```
 git clone https://github.com/ssciwr/effective-software-testing.git
