@@ -35,7 +35,7 @@ repos:
     rev: v1.11.2
     hooks:
       - id: mypy
-        additional_dependencies: [numpy, PyQt5-stubs]
+        additional_dependencies: [numpy]
         args:
           [
             --ignore-missing-imports,

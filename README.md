@@ -11,7 +11,7 @@ This branch contains a mostly empty framework as a starting point for use in the
 To do an editable install:
 
 ```
-pip install -e .[tests]
+pip install -e '.[tests]'
 ```
 
 To run pytest (note there are no tests yet!):

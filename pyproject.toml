@@ -20,23 +20,12 @@ classifiers = [
 dependencies = [
     "click",
     "numpy",
-    "PyQt6"
 ]
 
 [project.optional-dependencies]
 tests = [
     "pytest",
-    "pytest-cov",
-    "pytest-randomly",
-    "pytest-qt",
-    "pytest-xvfb",
-    "ipytest",
-    "hypothesis",
 ]
-
-# Command line scripts installed as part of the installation
-[project.scripts]
-tic-tac-toe = "effective_software_testing.__main__:main"
 
 [tool.hatch]
 version.path = "src/effective_software_testing/__init__.py"
