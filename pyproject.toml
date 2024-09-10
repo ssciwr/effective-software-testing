@@ -24,8 +24,7 @@ dependencies = [
 
 [project.optional-dependencies]
 tests = [
-    "pytest",
-    "pytest-cov"
+    "pytest"
 ]
 
 [tool.hatch]
