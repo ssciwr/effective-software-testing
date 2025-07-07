@@ -26,7 +26,7 @@ To clone the repo and do an editable installation of the package:
 ```
 git clone https://github.com/ssciwr/effective-software-testing.git
 cd effective-software-testing
-python -m pip install --editable .[tests]
+python -m pip install --editable '.[tests]'
 ```
 
 To run the tests:
