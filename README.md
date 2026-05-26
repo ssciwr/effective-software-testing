@@ -35,8 +35,6 @@ To play the tic-tac-toe game on a 4x4 board:
 tic-tac-toe --size 4
 ```
 
-![screenshot](docs/assets/images/screenshot.png)
-
 ## Acknowledgments
 
 This repository was set up using the [SSC Cookiecutter for Python Packages](https://github.com/ssciwr/cookiecutter-python-package).
