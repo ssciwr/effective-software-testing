@@ -1,7 +1,7 @@
 from __future__ import annotations
 from effective_software_testing.player import Player
 from effective_software_testing.board import Board
-from effective_software_testing.engine import Engine
+from effective_software_testing.engine import Engine, BetterEngine
 from typing import Optional
 import pytest
 import numpy as np
@@ -81,3 +81,10 @@ def test_two_engines_finish_game(
         assert _count_squares(board, None) >= 0
     assert engine_cross.make_move() is False
     assert engine_circle.make_move() is False
+
+
+def test_better_engine_first_move_in_center():
+    board = Board(n=3)
+    engine = BetterEngine(Player.CROSS, board)
+    engine.make_move()
+    assert board.square(1, 1) == Player.CROSS

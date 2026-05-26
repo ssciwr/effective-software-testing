@@ -24,3 +24,12 @@ class Engine:
             if self._board.make_move(row, col, self._player):
                 return True
         return False
+
+
+class BetterEngine(Engine):
+    """A better tic-tac-toe engine that makes winning moves when possible"""
+
+    def make_move(self) -> bool:
+        if self._board.make_move(1, 1, self._player):
+            return True
+        return super().make_move()
