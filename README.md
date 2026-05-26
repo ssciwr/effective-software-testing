@@ -14,6 +14,12 @@ and
 [codecov](https://app.codecov.io/gh/ssciwr/effective-software-testing)
 which automatically run the tests and display a coverage report whenever a pull request is made.
 
+## Slides
+
+[![Course slides](https://ssciwr.github.io/effective-software-testing/slides-thumb.png)](https://ssciwr.github.io/effective-software-testing)
+
+[Open slides](https://ssciwr.github.io/effective-software-testing) | [Download as PDF](https://ssciwr.github.io/effective-software-testing/slides.pdf) | [Course description](https://www.ssc.uni-heidelberg.de/en/compact-course-effective-software-testing)
+
 ## Getting started
 
 To clone the repo and do an editable install of the package:
